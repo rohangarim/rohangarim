@@ -1,0 +1,76 @@
+import random
+import turtle as trtl
+painter = trtl.Turtle()
+
+Play = input("Please enter start to begin.")
+play = Play.lower()
+
+while (play == "start"):
+
+   sideLength = 50
+
+   sidesArray = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+   sides = random.choice(sidesArray)
+   shapeNameArray = ["triangle", "square", "pentagon", "hexagon", "heptagon", "octagon", "nonagon", "decagon",
+                     "hendecagon", "dodecagon"]
+   sidesArray2 = ["3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+
+   colorArray = ["red", "orange", "yellow", "green", "blue", "purple"]
+   fillColor = random.choice(colorArray)
+
+   sumAngle = (sides - 2) * 180
+   angle = 180 - (sumAngle / sides)
+
+   painter.begin_fill()
+   painter.fillcolor(fillColor)
+
+   for i in range(sides):
+       painter.forward(sideLength)
+       painter.left(angle)
+
+   painter.end_fill()
+
+   Number_Sides = input("How many sides does the shape have? (please answer with numbers)")
+
+   if (Number_Sides == sidesArray2[sides-3]):
+      print("Correct!")
+   else: 
+      Number_Sides = sidesArray2[sides-3]
+      print("Incorrect. The shape has " + sidesArray2[sides-3] + " sides.")
+      
+      
+   shapeName = input("What shape is this? ")
+   shape_name = shapeName.lower()
+
+   if (shape_name == shapeNameArray[sides - 3]):
+       print("Correct!")
+   else:
+       realShapeName = shapeNameArray[sides - 3]
+       print("Incorrect. That shape is a " + realShapeName + ".")
+       number_sides = str(sidesArray[sides] - 3)
+      
+
+   shapeColor = input("What color is this? ")
+   shape_color = shapeColor.lower()
+
+   if (shape_color == fillColor):
+       print("Correct!")
+   else:
+      print("Incorrect. That is a " + fillColor + " shape.")
+
+   Play_Again = input("Would you like to play again?")
+   play_again = Play_Again.lower()
+
+   if (play_again == "yes"):
+       play = "start"
+       painter.clear()
+   else:
+       play_again = "no"
+       print("I hope you enjoyed using this program!")
+       break
+
+wn = trtl.Screen()
+wn.mainloop()
+
+
+
